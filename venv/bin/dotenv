@@ -1,4 +1,4 @@
-#!/home/jpch89/code/microblog/venv/bin/python3
+#!/home/jpch89/code/microblog/venv/bin/python
 
 # -*- coding: utf-8 -*-
 import re

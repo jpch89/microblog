@@ -3,8 +3,8 @@
 # @Time:   18-8-27 上午10:21
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
+from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 
 from app.models import User
 
@@ -33,3 +33,8 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('请使用其它的电子邮箱')
+
+class EditProfileForm(FlaskForm):
+    username = StringField('用户名', validators=[DataRequired()])
+    about_me = TextAreaField('关于我', validators=[Length(min=0, max=140)])
+    submit = SubmitField('提交')
