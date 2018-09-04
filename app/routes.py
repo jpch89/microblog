@@ -106,3 +106,34 @@ def edit_profile():
        
     return render_template('edit_profile.html', title='编辑个人信息', form=form)
 
+
+@app.route('/follow/<username>')
+@login_required
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('用户{}未找到。'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('你不能关注自己！')
+        return redirect(url_for('user', username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash('正在关注{}'.format(username))
+    return redirect(url_for('user', username=username))
+
+
+@app.route('/unfollow/<username>')
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('用户{}未找到。'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('你不能取消关注自己！')
+        return redirect(url_for('user', username=username))
+    current_user.unfollow(user)
+    db.session.commit()
+    flash('取消关注{}'.format(username))
+    return redirect(url_for('user', username=username))
