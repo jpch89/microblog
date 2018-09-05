@@ -9,7 +9,9 @@ from werkzeug.urls import url_parse
 # 第一个 app 是 app 包，是文件夹
 # 第二个 app 是 app 变量，是 Flask 核心对象
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
+from app.email import send_password_reset_email
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ResetPasswordRequestForm, \
+    ResetPasswordForm
 from app.models import User, Post
 
 from datetime import datetime
@@ -84,6 +86,37 @@ def register():
         flash('恭喜你，注册成功！')
         return redirect(url_for('login'))
     return render_template('register.html', title='注册', form=form)
+
+
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetPasswordRequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash('请查收邮件，按照说明重置密码')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html',
+                           title='重置密码', form=form)
+
+
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    user = User.verify_reset_password_token(token)
+    if not user:
+        return redirect(url_for('index'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+        flash('你的密码已经重置')
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', form=form)
 
 
 @app.route('/user/<username>')

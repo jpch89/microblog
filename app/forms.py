@@ -34,6 +34,19 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('邮箱地址已存在，请使用其它电子邮箱。')
 
+
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('电子邮箱', validators=[DataRequired(), Email()])
+    submit = SubmitField('申请重置密码')
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('密码', validators=[DataRequired()])
+    password2 = PasswordField(
+        '重复密码', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('立即重置密码')
+
+
 class EditProfileForm(FlaskForm):
     username = StringField('用户名', validators=[DataRequired()])
     about_me = TextAreaField('关于我', validators=[Length(min=0, max=140)])
