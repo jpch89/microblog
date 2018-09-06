@@ -12,7 +12,7 @@
                 {% endif %}
 
                 {% if user.last_seen %}
-                    <p>最后出现于: {{ user.last_seen }}</p>
+                    <p>最后出现于: {{ moment(user.last_seen).format('LLL') }}</p>
                 {% endif %}
 
                 <p>被{{ user.followers.count() }}人关注，关注了{{ user.followed.count() }}人。</p>

@@ -132,3 +132,6 @@ jinja2.exceptions.UndefinedError: 'app.forms.ResetPasswordForm object' has no at
 2018-09-05 11:55:17,591 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
 2018-09-06 08:56:28,961 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
 2018-09-06 08:58:42,634 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
+2018-09-06 09:41:15,386 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
+2018-09-06 14:23:43,358 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:54]
+2018-09-06 14:26:20,968 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:54]
