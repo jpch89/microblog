@@ -1,34 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
     {% if title %}
-        <title>{{ title }} —— 微博客</title>
+        {{ title }} —— 微博客
     {% else %}
-        <title>欢迎来到微博客！</title>
+        欢迎来到微博客
     {% endif %}
-</head>
-<body>
-    <div>
-        微博客：
-        <a href="{{ url_for('index') }}">首页</a>
-        <a href="{{ url_for('explore') }}">发现</a>
-        {% if current_user.is_anonymous %}
-            <a href="{{ url_for('login') }}">登录</a>
-        {% else %}
-            <a href="{{ url_for('logout') }}">注销</a>
-            <a href="{{ url_for('user', username=current_user.username) }}">个人信息</a>
-        {% endif %}
-    </div>
-    {% with messages = get_flashed_messages() %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index') }}">微博客</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('index') }}">首页</a></li>
+                    <li><a href="{{ url_for('explore') }}">发现</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('login') }}">登录</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">个人信息</a></li>
+                    <li><a href="{{ url_for('logout') }}">注销</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
         {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
-</body>
-</html>
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {# 应用内容需要写在 app_content 块内 #}
+        {% block app_content %}{% endblock %}
+
+    </div>
+{% endblock %}
