@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-09-06 17:15+0800\n"
-"PO-Revision-Date: 2018-09-06 17:32+0800\n"
+"POT-Creation-Date: 2018-09-08 10:44+0800\n"
+"PO-Revision-Date: 2018-09-08 10:29+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: app/__init__.py:25
 msgid "请先登录再访问页面。"
-msgstr "Please login to view this page."
+msgstr "Please login first."
 
 #: app/email.py:26
 msgid "[微博客]重置密码"
-msgstr "[Microblog]Reset Password"
+msgstr "[Microblog] Reset Password"
 
 #: app/forms.py:13 app/forms.py:20 app/forms.py:51 app/templates/user.html:8
 msgid "用户名"
@@ -32,7 +32,7 @@ msgstr "Username"
 
 #: app/forms.py:13 app/forms.py:20
 msgid "用户名不能为空"
-msgstr "Username is required"
+msgstr "Username cannot be empty"
 
 #: app/forms.py:14 app/forms.py:22 app/forms.py:44
 msgid "密码"
@@ -40,56 +40,56 @@ msgstr "Password"
 
 #: app/forms.py:14 app/forms.py:22 app/forms.py:24
 msgid "密码不能为空"
-msgstr "Password is required"
+msgstr "Password cannot be empty"
 
 #: app/forms.py:15
 msgid "记住我"
 msgstr "Remember me"
 
-#: app/forms.py:16 app/routes.py:68 app/templates/base.html:30
+#: app/forms.py:16 app/routes.py:74 app/templates/base.html:30
 #: app/templates/login.html:5
 msgid "登录"
 msgstr "Login"
 
 #: app/forms.py:21 app/forms.py:39
 msgid "电子邮箱"
-msgstr "Email"
+msgstr "Email address"
 
 #: app/forms.py:21
 msgid "电子邮箱不能为空"
-msgstr "Email is required"
+msgstr "Email address cannot be empty"
 
 #: app/forms.py:23
 msgid "重复输入密码"
-msgstr "repeat your password"
+msgstr "Repeat password"
 
-#: app/forms.py:25 app/routes.py:89 app/templates/register.html:5
+#: app/forms.py:25 app/routes.py:95 app/templates/register.html:5
 msgid "注册"
 msgstr "Register"
 
 #: app/forms.py:30
 msgid "请使用其它的用户名"
-msgstr "Please use other usernames"
+msgstr "Please use other username"
 
 #: app/forms.py:35
 msgid "邮箱地址已存在，请使用其它电子邮箱。"
-msgstr "Email address already exists, please use other Emails."
+msgstr "Email address already exists, please use other Email address."
 
 #: app/forms.py:40
 msgid "申请重置密码"
-msgstr "Request password reset"
+msgstr "Request for password reset"
 
 #: app/forms.py:46
 msgid "重复密码"
-msgstr "repeat your password"
+msgstr "Repeat password"
 
 #: app/forms.py:47
 msgid "立即重置密码"
-msgstr "Reset Password"
+msgstr "Reset Password Now"
 
 #: app/forms.py:52
 msgid "关于我"
-msgstr "About Me"
+msgstr "About me"
 
 #: app/forms.py:53 app/forms.py:69
 msgid "提交"
@@ -97,75 +97,83 @@ msgstr "Submit"
 
 #: app/forms.py:63
 msgid "用户名已存在，请输入其它用户名。"
-msgstr "Username already exists, please enter other usernames."
+msgstr "Username already exists, please use other username."
 
 #: app/forms.py:67
 msgid "写点什么"
 msgstr "Write something"
 
-#: app/routes.py:37
+#: app/routes.py:43
 msgid "博文已发送！"
 msgstr "Post has been sent!"
 
-#: app/routes.py:47 app/templates/base.html:25
+#: app/routes.py:53 app/templates/base.html:25
 msgid "首页"
 msgstr "Index"
 
-#: app/routes.py:61
+#: app/routes.py:67
 msgid "不正确的用户名或者密码"
 msgstr "Incorrect username or password"
 
-#: app/routes.py:87
+#: app/routes.py:93
 msgid "恭喜你，注册成功！"
 msgstr "Congratulations, successfully registered!"
 
-#: app/routes.py:101
+#: app/routes.py:107
 msgid "请查收邮件，按照说明重置密码"
-msgstr "Please check your email and follow the instructions to reset your password."
+msgstr "Please check your Email and follow the instructions to reset password."
 
-#: app/routes.py:104 app/templates/reset_password_request.html:5
+#: app/routes.py:110 app/templates/reset_password_request.html:5
 msgid "重置密码"
 msgstr "Reset password"
 
-#: app/routes.py:118
+#: app/routes.py:124
 msgid "你的密码已经重置"
-msgstr "Your password has been reset"
+msgstr "Your password has been reset."
 
-#: app/routes.py:145
+#: app/routes.py:151
 msgid "已保存所有更改。"
 msgstr "All changes have been saved."
 
-#: app/routes.py:151 app/templates/edit_profile.html:5
+#: app/routes.py:157 app/templates/edit_profile.html:5
 #: app/templates/user.html:25
 msgid "编辑个人信息"
-msgstr "Edit your profile"
+msgstr "Edit Profile"
 
-#: app/routes.py:159 app/routes.py:175
+#: app/routes.py:165 app/routes.py:181
 #, python-format
 msgid "用户%(username)s未找到。"
-msgstr "User%(username)sis not found."
+msgstr "User%(username)shas not found."
 
-#: app/routes.py:162
+#: app/routes.py:168
 msgid "你不能关注自己！"
-msgstr "You can't follow yourself!"
+msgstr "You cannot follow yourself!"
 
-#: app/routes.py:166
+#: app/routes.py:172
 #, python-format
 msgid "正在关注%(username)s"
 msgstr "Following%(username)s"
 
-#: app/routes.py:178
+#: app/routes.py:184
 msgid "你不能取消关注自己！"
-msgstr "You can't unfollow yourself!"
+msgstr "You cannot unfollow yourself!"
 
-#: app/routes.py:182
+#: app/routes.py:188
 #, python-format
 msgid "取消关注%(username)s"
-msgstr "Unfollow%(username)s"
+msgstr "Unfollowing%(username)s"
 
-#: app/routes.py:196 app/templates/base.html:26
+#: app/routes.py:202 app/templates/base.html:26
 msgid "发现"
 msgstr "Explore"
+
+#: app/translate.py:12
+msgid "错误：没有配置翻译服务。"
+msgstr "Error: No translation service is configured."
+
+#: app/translate.py:18
+msgid "错误：翻译服务失败。"
+msgstr "Error: Translation service failed."
 
 #: app/templates/404.html:4
 msgid "没有找到该页面"
@@ -173,20 +181,24 @@ msgstr "Page Not Found"
 
 #: app/templates/404.html:5 app/templates/500.html:6
 msgid "返回首页"
-msgstr "Back"
+msgstr "Back to Index"
 
 #: app/templates/500.html:4
 msgid "发生异常"
-msgstr "Errors happened."
+msgstr "Errors happened"
 
 #: app/templates/500.html:5
 msgid "已通知管理员，非常抱歉为您带来不便。"
-msgstr "Administrator has been notified, sorry for your inconvenience."
+msgstr "Admin has been notified, sorry for the inconvenience."
 
 #: app/templates/_post.html:15
 #, python-format
-msgid "%(username)s写于%(when)s："
-msgstr "%(username)s wrote %(when)s："
+msgid "%(username)s 写于 %(when)s"
+msgstr "%(username)s wrote %(when)s"
+
+#: app/templates/_post.html:30
+msgid "翻译"
+msgstr "Translate"
 
 #: app/templates/base.html:5
 #, python-format
@@ -209,14 +221,18 @@ msgstr "Profile"
 msgid "注销"
 msgstr "Logout"
 
+#: app/templates/base.html:73
+msgid "错误：无法连接服务器。"
+msgstr "Error: cannot connect to server."
+
 #: app/templates/index.html:5
 #, python-format
 msgid "你好，%(username)s！"
-msgstr "Hi, %(username)s！"
+msgstr "Hello, %(username)s!"
 
 #: app/templates/index.html:19 app/templates/user.html:48
 msgid "上一页"
-msgstr "Previous"
+msgstr "Prev"
 
 #: app/templates/index.html:24 app/templates/user.html:53
 msgid "下一页"
@@ -224,7 +240,7 @@ msgstr "Next"
 
 #: app/templates/login.html:13
 msgid "新用户？"
-msgstr "New?"
+msgstr "New user?"
 
 #: app/templates/login.html:14
 msgid "点击注册！"
@@ -240,7 +256,7 @@ msgstr "Click to reset!"
 
 #: app/templates/reset_password.html:5
 msgid "重置你的密码"
-msgstr "Reset your password"
+msgstr "Reset your password!"
 
 #: app/templates/user.html:15
 msgid "最后出现于"
@@ -249,12 +265,12 @@ msgstr "Last seen on"
 #: app/templates/user.html:19
 #, python-format
 msgid "被%(count)d人关注，"
-msgstr "is followed by %(count)d, "
+msgstr "Followed by %(count)d, "
 
 #: app/templates/user.html:20
 #, python-format
 msgid "关注了%(count)d人。"
-msgstr "following %(count)d."
+msgstr "following%(count)d."
 
 #: app/templates/user.html:29
 msgid "关注"
@@ -263,4 +279,7 @@ msgstr "Follow"
 #: app/templates/user.html:33
 msgid "取消关注"
 msgstr "Unfollow"
+
+#~ msgid "%(username)s写于%(when)s"
+#~ msgstr "%(username)swrote%(when)s"
 

@@ -2,8 +2,9 @@
 # @Author: jpch89
 # @Time:   18-8-26 下午3:33
 
-from flask import render_template, flash, redirect, url_for, request, g
+from flask import render_template, flash, redirect, url_for, request, g, jsonify
 from flask_login import login_user, current_user, logout_user, login_required
+from guess_language import guess_language
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
 
@@ -16,14 +17,18 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, Re
 from app.models import User, Post
 from datetime import datetime
 
+from app.translate import translate
+
 
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-    g.local = str(get_locale())
-        
+    g.locale = str(get_locale())
+    if g.locale == 'zh':
+        g.locale = 'zh-cn'
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -31,7 +36,14 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        language = guess_language(form.post.data)
+        if language == 'UNKNOWN' or len(language) > 5:
+            language = ''
+        # print(language)
+        # 这里用 Firefox （默认英语 en ）
+        # 得到的是 zh
+        # 并且会显示翻译链接
+        post = Post(body=form.post.data, author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash(_('博文已发送！'))
@@ -195,3 +207,11 @@ def explore():
 
     return render_template('index.html', title=_('发现'), posts=posts.items,
                            next_url=next_url, prev_url=prev_url)
+
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    return jsonify({'text': translate(request.form['text'],
+                                      request.form['source_language'],
+                                      request.form['dest_language'])})

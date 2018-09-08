@@ -1,18 +1,25 @@
-2018-09-02 18:11:42,814 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-02 18:36:00,453 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-02 21:29:05,269 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-02 21:29:12,786 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-02 22:33:12,274 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 09:16:51,941 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 10:51:44,628 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 10:52:48,176 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 11:06:34,723 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 11:32:24,904 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 15:33:21,933 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 15:56:19,817 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 16:05:47,567 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 16:24:19,015 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 16:24:48,197 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-05 10:00:47,726 ERROR: Exception on /reset_password_request [POST] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 427, in send
+    connection.send(self)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 192, in send
+    message.rcpt_options)
+  File "/usr/lib/python3.6/smtplib.py", line 852, in sendmail
+    self.ehlo_or_helo_if_needed()
+  File "/usr/lib/python3.6/smtplib.py", line 600, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+  File "/usr/lib/python3.6/smtplib.py", line 440, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "/usr/lib/python3.6/smtplib.py", line 367, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.6/smtplib.py", line 359, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -26,12 +33,27 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 39, in index
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:24:53,374 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/jpch89/code/microblog/app/routes.py", line 99, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/jpch89/code/microblog/app/email.py", line 23, in send_password_reset_email
+    user=user, token=token))
+  File "/home/jpch89/code/microblog/app/email.py", line 13, in send_mail
+    mail.send(msg)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 152, in __exit__
+    self.host.quit()
+  File "/usr/lib/python3.6/smtplib.py", line 984, in quit
+    res = self.docmd("quit")
+  File "/usr/lib/python3.6/smtplib.py", line 420, in docmd
+    self.putcmd(cmd, args)
+  File "/usr/lib/python3.6/smtplib.py", line 367, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.6/smtplib.py", line 359, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+2018-09-05 10:04:04,963 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
+2018-09-05 10:05:51,021 ERROR: Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6MywiZXhwIjoxNTM2MTEzNjU3LjEyNTI3OTd9.Aqtn-rtNBhgOhhn4T54gahW7UQSV1C57Tjvna-Ni6vM [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -45,12 +67,30 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 39, in index
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:24:54,664 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/jpch89/code/microblog/app/routes.py", line 119, in reset_password
+    return render_template('reset_password.html', form=form)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jpch89/code/microblog/app/templates/reset_password.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "/home/jpch89/code/microblog/app/templates/base.html", line 32, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/jpch89/code/microblog/app/templates/reset_password.html", line 15, in block "content"
+    {{ form.password2.label }}<br/>
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.ResetPasswordForm object' has no attribute 'password2'
+2018-09-05 10:06:43,943 ERROR: Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6MywiZXhwIjoxNTM2MTEzNjU3LjEyNTI3OTd9.Aqtn-rtNBhgOhhn4T54gahW7UQSV1C57Tjvna-Ni6vM [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -64,53 +104,35 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 39, in index
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:24:56,229 ERROR: Exception on /explore [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/home/jpch89/code/microblog/app/routes.py", line 119, in reset_password
+    return render_template('reset_password.html', form=form)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 149, in explore
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:25:10,738 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 39, in index
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:32:07,929 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 17:08:05,029 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 18:22:24,542 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
-2018-09-04 18:30:36,514 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
-2018-09-04 20:58:16,783 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
-2018-09-04 21:18:57,997 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
-2018-09-05 09:52:00,519 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jpch89/code/microblog/app/templates/reset_password.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "/home/jpch89/code/microblog/app/templates/base.html", line 32, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/jpch89/code/microblog/app/templates/reset_password.html", line 15, in block "content"
+    {{ form.password2.label }}<br/>
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.ResetPasswordForm object' has no attribute 'password2'
+2018-09-05 10:06:55,795 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
+2018-09-05 11:53:38,271 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
+2018-09-05 11:55:17,591 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
+2018-09-06 08:56:28,961 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
+2018-09-06 08:58:42,634 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
+2018-09-06 09:41:15,386 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:52]
+2018-09-06 14:23:43,358 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:54]
+2018-09-06 14:26:20,968 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:54]
+2018-09-06 15:18:40,731 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:56]
