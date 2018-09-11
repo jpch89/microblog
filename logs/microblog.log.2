@@ -1,4 +1,4 @@
-2018-09-06 18:04:37,058 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-10 15:26:52,797 ERROR: Exception on / [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,7 +14,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 49, in index
+  File "/home/jpch89/code/microblog/app/main/routes.py", line 51, in index
     next_url=next_url, prev_url=prev_url)
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
@@ -44,10 +44,21 @@ Traceback (most recent call last):
     {% block app_content %}{% endblock %}
   File "/home/jpch89/code/microblog/app/templates/index.html", line 12, in block "app_content"
     {% include '_post.html' %}
-  File "/home/jpch89/code/microblog/app/templates/_post.html", line 15, in top-level template code
-    {{ _('%(username)s写于%(when)s：',
-jinja2.exceptions.UndefinedError: 'datetime.datetime object' has no attribute 'fromNow'
-2018-09-06 18:04:37,503 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/jpch89/code/microblog/app/templates/_post.html", line 4, in top-level template code
+    <a href="{{ url_for('user', username=post.author.username) }}">
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'user' with values ['username']. Did you mean 'main.user' instead?
+2018-09-10 15:27:30,294 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:80]
+2018-09-10 15:27:54,278 ERROR: Exception on /user/路飞 [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -63,7 +74,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 49, in index
+  File "/home/jpch89/code/microblog/app/main/routes.py", line 78, in user
     next_url=next_url, prev_url=prev_url)
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
@@ -77,8 +88,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/jpch89/code/microblog/app/templates/index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/jpch89/code/microblog/app/templates/user.html", line 1, in top-level template code
+    {% extends 'base.html' %}
   File "/home/jpch89/code/microblog/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
@@ -91,25 +102,22 @@ Traceback (most recent call last):
     {% block content -%}
   File "/home/jpch89/code/microblog/app/templates/base.html", line 53, in block "content"
     {% block app_content %}{% endblock %}
-  File "/home/jpch89/code/microblog/app/templates/index.html", line 12, in block "app_content"
-    {% include '_post.html' %}
-  File "/home/jpch89/code/microblog/app/templates/_post.html", line 15, in top-level template code
-    {{ _('%(username)s写于%(when)s：',
-jinja2.exceptions.UndefinedError: 'datetime.datetime object' has no attribute 'fromNow'
-2018-09-06 18:05:52,649 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-06 18:08:32,263 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-06 20:45:16,848 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-06 21:27:53,818 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-06 21:28:01,498 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-06 21:30:05,726 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-06 21:37:14,670 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-06 21:37:24,070 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-07 07:27:40,240 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-07 07:28:22,290 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-07 20:58:20,497 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-07 21:07:17,815 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 09:07:25,774 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 09:36:12,532 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 09:36:36,196 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 09:40:28,169 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 09:40:46,616 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
+  File "/home/jpch89/code/microblog/app/templates/user.html", line 25, in block "app_content"
+    <a href="{{ url_for('edit_profile') }}">{{ _('编辑个人信息') }}</a>
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'edit_profile'. Did you mean 'main.edit_profile' instead?
+2018-09-10 15:28:43,192 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:80]
+2018-09-10 15:31:05,420 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:80]
+2018-09-10 15:32:18,889 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:80]
+2018-09-10 15:33:39,156 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:80]
+2018-09-10 16:08:50,773 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:80]
+2018-09-11 09:53:16,974 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:80]

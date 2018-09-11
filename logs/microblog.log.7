@@ -1,18 +1,4 @@
-2018-09-02 18:11:42,814 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-02 18:36:00,453 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-02 21:29:05,269 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-02 21:29:12,786 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-02 22:33:12,274 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 09:16:51,941 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 10:51:44,628 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 10:52:48,176 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 11:06:34,723 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 11:32:24,904 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 15:33:21,933 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 15:56:19,817 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 16:05:47,567 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 16:24:19,015 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 16:24:48,197 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-06 18:04:35,311 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -28,10 +14,40 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 39, in index
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:24:53,374 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/jpch89/code/microblog/app/routes.py", line 49, in index
+    next_url=next_url, prev_url=prev_url)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jpch89/code/microblog/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/jpch89/code/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/jpch89/code/microblog/app/templates/base.html", line 53, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/home/jpch89/code/microblog/app/templates/index.html", line 12, in block "app_content"
+    {% include '_post.html' %}
+  File "/home/jpch89/code/microblog/app/templates/_post.html", line 15, in top-level template code
+    {{ _('%(username)s写于%(when)s：',
+jinja2.exceptions.UndefinedError: 'datetime.datetime object' has no attribute 'fromNow'
+2018-09-06 18:04:36,206 ERROR: Exception on /explore [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -47,70 +63,36 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 39, in index
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:24:54,664 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/home/jpch89/code/microblog/app/routes.py", line 197, in explore
+    next_url=next_url, prev_url=prev_url)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 39, in index
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:24:56,229 ERROR: Exception on /explore [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 149, in explore
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:25:10,738 ERROR: Exception on /index [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/jpch89/code/microblog/app/routes.py", line 39, in index
-    page, app.config['POST_PER_PAGE'], False)
-KeyError: 'POST_PER_PAGE'
-2018-09-04 16:32:07,929 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 17:08:05,029 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:48]
-2018-09-04 18:22:24,542 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
-2018-09-04 18:30:36,514 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
-2018-09-04 20:58:16,783 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
-2018-09-04 21:18:57,997 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
-2018-09-05 09:52:00,519 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:50]
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jpch89/code/microblog/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/jpch89/code/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/jpch89/code/microblog/app/templates/base.html", line 53, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/home/jpch89/code/microblog/app/templates/index.html", line 12, in block "app_content"
+    {% include '_post.html' %}
+  File "/home/jpch89/code/microblog/app/templates/_post.html", line 15, in top-level template code
+    {{ _('%(username)s写于%(when)s：',
+jinja2.exceptions.UndefinedError: 'datetime.datetime object' has no attribute 'fromNow'

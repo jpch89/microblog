@@ -1,8 +1,34 @@
-2018-09-08 11:14:56,424 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 11:15:06,955 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 11:16:17,121 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 11:36:02,685 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 11:43:02,928 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 11:44:54,737 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 11:49:10,481 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
-2018-09-08 11:54:22,553 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:57]
+2018-09-11 10:53:28,750 ERROR: Exception on /search [GET] [in /home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jpch89/code/microblog/app/main/routes.py", line 154, in search
+    next_url=next_url, prev_url=prev_url)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/jpch89/code/microblog/venv/lib/python3.6/site-packages/flask/templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: search.html
+2018-09-11 10:57:23,209 INFO: Microblog startup [in /home/jpch89/code/microblog/app/__init__.py:80]
